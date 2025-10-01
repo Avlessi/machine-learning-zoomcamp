@@ -1,0 +1,15 @@
+[project]
+name = "ml_zoomcap_intro"
+version = "0.1.0"
+description = "Projet using pandas and numpy"
+readme = "README.md"
+requires-python = ">=3.10"
+
+dependencies = [
+    "pandas",
+    "numpy",
+]
+
+[tool.uv]
+# Active le lockfile par défaut
+lock = true
