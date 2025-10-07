@@ -1,12 +1,7 @@
-# hw_car_mpg.py
 import io
-import math
-import json
 import requests
 import numpy as np
 import pandas as pd
-
-URL = "https://raw.githubusercontent.com/alexeygrigorev/datasets/master/car_fuel_efficiency.csv"
 
 
 def rmse(y, y_pred):
@@ -47,7 +42,9 @@ def split_train_val_test(df, seed=42):
 
 def main():
 
-    csv = requests.get(URL).text
+    url = "https://raw.githubusercontent.com/alexeygrigorev/datasets/master/car_fuel_efficiency.csv"
+
+    csv = requests.get(url).text
     df = pd.read_csv(io.StringIO(csv))
 
     cols = ['engine_displacement', 'horsepower', 'vehicle_weight', 'model_year', 'fuel_efficiency_mpg']
@@ -113,9 +110,9 @@ def main():
     better_q3 = "With mean" if rmse_mean < rmse_zero - 1e-12 else ("With 0" if rmse_zero < rmse_mean - 1e-12 else "Both are equally good")
 
     
-    print(f"  RMSE (0)   = {round(rmse_zero, 2)}")
-    print(f"  RMSE (mean)= {round(rmse_mean, 2)}")
-    print(f"  Answer: {better_q3}")
+    print(f"RMSE (0)   = {round(rmse_zero, 2)}")
+    print(f"RMSE (mean)= {round(rmse_mean, 2)}")
+    print(f"Answer: {better_q3}")
 
     
     r_list = [0, 0.01, 0.1, 1, 5, 10, 100]
